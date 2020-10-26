@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    aaaaa
     <router-view />
   </div>
 </template>
@@ -18,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 <style lang="scss" scoped>
 @import './assets/styles/global';
 #app {
-  font-size: px2rem(80);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 </style>
