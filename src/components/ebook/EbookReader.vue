@@ -24,10 +24,10 @@ export default {
       }
     },
     toggleTitleAndMenu() {
-      this.$store.dispatch('setMenuVisible', !this.menuVisible)
+      this.setMenuVisible(!this.menuVisible)
     },
     hideTitleAndMenu() {
-      this.$store.dispatch('setMenuVisible', false)
+      this.setMenuVisible(false)
     },
     initEpub() {
       const url = this.fileName + '.epub'
@@ -57,11 +57,9 @@ export default {
     },
   },
   mounted() {
-    this.$store
-      .dispatch('setFileName', this.$route.params.fileName)
-      .then(() => {
-        this.initEpub()
-      })
+    this.setFileName(this.$route.params.fileName).then(() => {
+      this.initEpub()
+    })
   },
 }
 </script>
