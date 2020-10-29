@@ -9,13 +9,13 @@ export default {}
 
 document.addEventListener('DOMContentLoaded', () => {
   const html = document.querySelector('html')
-  let fontSize = html.innerWidth / 10
-  fontSize = fontSize > 50 ? 50 : fontSize
+  let fontSize = html.innerWidth / 5
+  fontSize = fontSize > 100 ? 100 : fontSize
   html.style.fontSize = fontSize
 })
 </script>
 <style lang="scss" scoped>
-@import './assets/styles/global';
+@import '@/assets/styles/global';
 #app {
   width: 100%;
   height: 100%;
