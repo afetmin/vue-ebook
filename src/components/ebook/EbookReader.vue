@@ -28,10 +28,12 @@ export default {
         this.setSettingVisible(-1)
       }
       this.setMenuVisible(!this.menuVisible)
+      this.setFontFamilyVisible(false)
     },
     hideTitleAndMenu() {
       this.setMenuVisible(false)
       this.setSettingVisible(-1)
+      this.setFontFamilyVisible(false)
     },
     initEpub() {
       const url = this.fileName + '.epub'
@@ -58,6 +60,9 @@ export default {
         } else {
           this.toggleTitleAndMenu()
         }
+      })
+      this.rendition.hooks.content.register(contents => {
+        contents.addStylesheet('@/assets/fonts/daysOne.css')
       })
     },
   },
