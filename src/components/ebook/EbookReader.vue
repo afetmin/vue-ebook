@@ -12,6 +12,8 @@ import {
   getFontFamily,
   getFontSize,
   saveFontSize,
+  getTheme,
+  saveTheme,
 } from '@/utils/localStorage'
 global.epub = Epub
 export default {
@@ -40,6 +42,18 @@ export default {
       this.setMenuVisible(false)
       this.setSettingVisible(-1)
       this.setFontFamilyVisible(false)
+    },
+    initTheme() {
+      let defaultTheme = getTheme(this.fileName)
+      if (!defaultTheme) {
+        defaultTheme = this.themeList[0].name
+        this.setDefaultTheme(defaultTheme)
+        saveTheme(this.fileName, defaultTheme)
+      }
+      this.themeList.forEach((theme) => {
+        this.rendition.themes.register(theme.name, theme.style)
+      })
+      this.rendition.themes.select(defaultTheme)
     },
     initFontSize() {
       let fontSize = getFontSize(this.fileName)
@@ -70,6 +84,7 @@ export default {
         method: 'default', // 微信兼容
       })
       this.rendition.display().then(() => {
+        this.initTheme()
         this.initFontSize()
         this.initFontFamily()
       })
