@@ -7,6 +7,12 @@
 <script>
 import Epub from 'epubjs'
 import { ebookMixin } from '@/utils/mixin'
+import {
+  saveFontFamily,
+  getFontFamily,
+  getFontSize,
+  saveFontSize,
+} from '@/utils/localStorage'
 global.epub = Epub
 export default {
   mixins: [ebookMixin],
@@ -35,6 +41,24 @@ export default {
       this.setSettingVisible(-1)
       this.setFontFamilyVisible(false)
     },
+    initFontSize() {
+      let fontSize = getFontSize(this.fileName)
+      if (!fontSize) {
+        saveFontSize(this.fileName, this.defaultFontSize)
+      } else {
+        this.rendition.themes.fontSize(fontSize)
+        this.setDefaultFontSize(fontSize)
+      }
+    },
+    initFontFamily() {
+      let font = getFontFamily(this.fileName)
+      if (!font) {
+        saveFontFamily(this.fileName, this.defaultFontFamily)
+      } else {
+        this.rendition.themes.font(font)
+        this.setDefaultFontFamily(font)
+      }
+    },
     initEpub() {
       const url = this.fileName + '.epub'
       console.log(url)
@@ -45,7 +69,10 @@ export default {
         height: innerHeight,
         method: 'default', // 微信兼容
       })
-      this.rendition.display()
+      this.rendition.display().then(() => {
+        this.initFontSize()
+        this.initFontFamily()
+      })
       this.rendition.on('touchstart', (event) => {
         this.touchStartX = event.changedTouches[0].clientX
         this.touchStartTime = event.timeStamp
@@ -61,7 +88,7 @@ export default {
           this.toggleTitleAndMenu()
         }
       })
-      this.rendition.hooks.content.register(contents => {
+      this.rendition.hooks.content.register((contents) => {
         contents.addStylesheet('@/assets/fonts/daysOne.css')
       })
     },

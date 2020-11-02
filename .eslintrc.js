@@ -16,6 +16,7 @@ module.exports = {
     'space-before-function-paren':'off',
     'comma-dangle':'off',
     'quote-props': 'off',
-    'eol-last':'off'
+    'eol-last':'off',
+    'prefer-const': 'off'
   }
 }
