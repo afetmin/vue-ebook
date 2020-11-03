@@ -36,6 +36,7 @@ export default {
         this.currentBook.rendition.themes.override(key, bodyObject[key], true)
       }
       this.setDefaultTheme(theme.name)
+      this.initGlobalStyle()
       saveTheme(this.fileName, theme.name)
       // const theme = this.themeList[index]
       // this.setDefaultTheme(theme.name).then(() => {
