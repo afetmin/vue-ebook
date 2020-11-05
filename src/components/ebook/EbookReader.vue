@@ -43,11 +43,7 @@ export default {
       this.setMenuVisible(!this.menuVisible)
       this.setFontFamilyVisible(false)
     },
-    hideTitleAndMenu() {
-      this.setMenuVisible(false)
-      this.setSettingVisible(-1)
-      this.setFontFamilyVisible(false)
-    },
+
     initTheme() {
       let defaultTheme = getTheme(this.fileName)
       if (!defaultTheme) {
