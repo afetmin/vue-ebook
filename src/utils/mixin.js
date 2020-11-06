@@ -5,10 +5,11 @@ import {
 import {
   themeList,
   addCss,
-  removeAllCss
+  removeAllCss,
+  getReadTimeByMinute
 } from '@/utils/book'
 import {
-  saveLocation
+  saveLocation,
 } from '@/utils/localStorage'
 
 export const ebookMixin = {
@@ -80,6 +81,7 @@ export const ebookMixin = {
       }
     },
     refreshLocation() {
+      // 更新到章节/更新缓存/更新进度
       const currentLocation = this.currentBook.rendition.currentLocation()
       const startCfi = currentLocation.start.cfi
       const progress = this.currentBook.locations.percentageFromCfi(startCfi)
@@ -88,6 +90,7 @@ export const ebookMixin = {
       saveLocation(this.fileName, startCfi)
     },
     display(target, callback) {
+      // 每次渲染后都更新信息，在回调内做后续工作
       if (target) {
         this.currentBook.rendition.display(target).then(() => {
           this.refreshLocation()
@@ -104,6 +107,9 @@ export const ebookMixin = {
       this.setMenuVisible(false)
       this.setSettingVisible(-1)
       this.setFontFamilyVisible(false)
+    },
+    getReadTimeText() {
+      return this.$t('book.haveRead').replace('$1', getReadTimeByMinute(this.fileName))
     },
   }
 }

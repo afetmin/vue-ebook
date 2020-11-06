@@ -123,6 +123,18 @@ export default {
         }
       })
     },
+    parseBook() {
+      // 设置封面
+      this.book.loaded.cover.then(cover => {
+        this.book.archive.createUrl(cover).then(url => {
+          this.setCover(url)
+        })
+      })
+      // 获取元信息
+      this.book.loaded.metadata.then(metadata => {
+        this.setMetadata(metadata)
+      })
+    },
     initEpub() {
       const url =
         `${process.env.VUE_APP_RES_URL}/epub/` +
@@ -133,6 +145,7 @@ export default {
       this.setCurrentBook(this.book)
       this.initRendition()
       this.initGesture()
+      this.parseBook()
       this.book.ready
         .then(() => {
           // 分页
