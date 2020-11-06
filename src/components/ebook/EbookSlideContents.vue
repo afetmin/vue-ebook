@@ -38,19 +38,50 @@
         <div class="slide-contents-book-time">{{ getReadTimeText() }}</div>
       </div>
     </div>
+    <scroll class="slide-contents-list" :top="156" :bottom="20" ref="scroll">
+      <div
+        class="slide-contents-item"
+        v-for="(item, index) in navigation"
+        :key="index"
+      >
+        <span
+          class="slide-contents-item-label"
+          :style="contentItemStyle(item)"
+          :class="{ selected: section === index }"
+          @click="displayNavigation(item.href)"
+          >{{ item.label }}</span
+        >
+        <span class="slide-contents-item-page"></span>
+      </div>
+    </scroll>
   </div>
 </template>
 
 <script>
 import { ebookMixin } from '@/utils/mixin'
+import Scroll from '@/components/common/Scroll'
+import { px2rem } from '@/utils/utils'
 export default {
   mixins: [ebookMixin],
+  components: {
+    Scroll,
+  },
   data() {
     return {
       searchVisible: false,
     }
   },
   methods: {
+    displayNavigation(target) {
+      this.display(target, () => {
+        this.hideTitleAndMenu()
+      })
+    },
+    contentItemStyle(item) {
+      return {
+        marginLeft: `${px2rem(item.level * 30)}rem`,
+      }
+    },
     showSearchPage() {
       this.searchVisible = true
     },
@@ -117,7 +148,7 @@ export default {
       .slide-contents-book-title {
         width: px2rem(327.25);
         font-size: px2rem(28);
-        @include ellipsis2(2)
+        @include ellipsis2(2);
       }
       .slide-contents-book-author {
         width: px2rem(327.25);
@@ -140,6 +171,22 @@ export default {
       .slide-contents-book-time {
         font-size: px2rem(24);
         margin-top: px2rem(10);
+      }
+    }
+  }
+  .slide-contents-list {
+    padding: 0 px2rem(30);
+    box-sizing: border-box;
+    .slide-contents-item {
+      display: flex;
+      padding: px2rem(40) 0;
+      box-sizing: border-box;
+      .slide-contents-item-label {
+        flex: 1;
+        font-size: px2rem(28);
+        @include ellipsis;
+      }
+      .slide-contents-item-page {
       }
     }
   }

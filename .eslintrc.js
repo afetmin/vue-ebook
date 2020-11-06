@@ -17,6 +17,7 @@ module.exports = {
     'comma-dangle':'off',
     'quote-props': 'off',
     'eol-last':'off',
-    'prefer-const': 'off'
+    'prefer-const': 'off',
+    'indent': 'off'
   }
 }
