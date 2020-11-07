@@ -8,7 +8,9 @@
         <input
           type="text"
           class="slide-contents-search-input"
+          v-model="searchText"
           :placeholder="$t('book.searchHint')"
+          @keyup.enter.exact="search()"
           @click="showSearchPage()"
         />
       </div>
@@ -22,7 +24,7 @@
         </div>
       </transition>
     </div>
-    <div class="slide-contents-book-wrapper">
+    <div class="slide-contents-book-wrapper" v-show="!searchVisible">
       <div class="slide-contents-book-img-wrapper">
         <img :src="cover" class="slide-contents-book-img" />
       </div>
@@ -38,7 +40,12 @@
         <div class="slide-contents-book-time">{{ getReadTimeText() }}</div>
       </div>
     </div>
-    <scroll class="slide-contents-list" :top="156" :bottom="20" ref="scroll">
+    <scroll
+      class="slide-contents-list"
+      :top="156"
+      :bottom="20"
+      v-show="!searchVisible"
+    >
       <div
         class="slide-contents-item"
         v-for="(item, index) in navigation"
@@ -48,11 +55,25 @@
           class="slide-contents-item-label"
           :style="contentItemStyle(item)"
           :class="{ selected: section === index }"
-          @click="displayNavigation(item.href)"
+          @click="displayContent(item.href)"
           >{{ item.label }}</span
         >
         <span class="slide-contents-item-page"></span>
       </div>
+    </scroll>
+    <scroll
+      class="slide-search-list"
+      :top="55"
+      :bottom="42"
+      v-show="searchVisible"
+    >
+      <div
+        class="slide-search-item"
+        v-for="(item, index) in searchList"
+        :key="index"
+        v-html="item.excerpt"
+        @click="displayContent(item.cfi, true)"
+      ></div>
     </scroll>
   </div>
 </template>
@@ -69,12 +90,42 @@ export default {
   data() {
     return {
       searchVisible: false,
+      searchList: null,
+      searchText: '',
     }
   },
   methods: {
-    displayNavigation(target) {
+    search() {
+      if (this.searchText && this.searchText.length > 0) {
+        this.doSearch(this.searchText).then((list) => {
+          this.searchList = list
+          this.searchList.map((item) => {
+            item.excerpt = item.excerpt.replace(
+              this.searchText,
+              `<span class="content-search-text">${this.searchText}</span>`
+            )
+            return item
+          })
+        })
+      }
+    },
+    doSearch(q) {
+      return Promise.all(
+        this.currentBook.spine.spineItems.map(
+          (section) =>
+            section
+              .load(this.currentBook.load.bind(this.currentBook)) // section绑定内容
+              .then(section.find.bind(section, q)) // 章节内搜索
+              .finally(section.unload.bind(section)) // 释放section
+        )
+      ).then((results) => Promise.resolve([].concat.apply([], results)))
+    },
+    displayContent(target, highlight = false) {
       this.display(target, () => {
         this.hideTitleAndMenu()
+        if (highlight) {
+          this.currentBook.rendition.annotations.highlight(target) // 高亮元素
+        }
       })
     },
     contentItemStyle(item) {
@@ -87,8 +138,11 @@ export default {
     },
     hideSearchPage() {
       this.searchVisible = false
+      this.searchText = ''
+      this.searchList = null
     },
   },
+  mounted() {},
 }
 </script>
 <style lang='scss' scoped>
@@ -186,8 +240,16 @@ export default {
         font-size: px2rem(28);
         @include ellipsis;
       }
-      .slide-contents-item-page {
-      }
+    }
+  }
+  .slide-search-list {
+    width: 100%;
+    padding: 0 px2rem(30);
+    box-sizing: border-box;
+    .slide-search-item {
+      font-size: px2rem(28);
+      padding: px2rem(40) 0;
+      box-sizing: border-box;
     }
   }
 }
