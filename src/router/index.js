@@ -4,18 +4,26 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [{
-  path: '/',
-  redirect: 'ebook'
-},
-{
-  path: '/ebook',
-  component: () => import('../views/ebook/index.vue'),
-  children: [{
-    path: ':fileName',
-    component: () => import('../components/ebook/EbookReader.vue')
+    path: '/',
+    redirect: '/store'
+  },
+  {
+    path: '/ebook',
+    component: () => import('@/views/ebook/index.vue'),
+    children: [{
+      path: ':fileName',
+      component: () => import('@/components/ebook/EbookReader.vue')
+    }]
+  },
+  {
+    path: '/store',
+    component: () => import('@/views/store/index.vue'),
+    redirect: '/store/home',
+    children: [{
+      path: 'home',
+      component: () => import('@/views/store/StoreHome.vue')
+    }]
   }
-  ]
-}
 ]
 
 const router = new VueRouter({
