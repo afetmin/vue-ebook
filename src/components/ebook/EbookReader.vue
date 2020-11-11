@@ -43,6 +43,7 @@ export default {
       } else {
         this.mouseState = 4
       }
+      // 点击时手抖一下事件也要响应，点击时间短有移动也算点击
       const time = e.timeStamp - this.mouseStartTime
       if (time < 100) {
         this.mouseState = 4
