@@ -35,7 +35,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 200;
+  z-index: 210;
   display: flex;
   width: 100%;
   height: px2rem(96);

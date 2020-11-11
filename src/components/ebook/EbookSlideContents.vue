@@ -29,8 +29,14 @@
         <img :src="cover" class="slide-contents-book-img" />
       </div>
       <div class="slide-contents-book-info-wrapper">
-        <div class="slide-contents-book-title">{{ metadata.title }}</div>
-        <div class="slide-contents-book-author">{{ metadata.creator }}</div>
+        <div class="slide-contents-book-title">
+          <span class="slide-contents-book-title-text">{{
+            metadata.title
+          }}</span>
+        </div>
+        <div class="slide-contents-book-author">
+          <span class="slide-contents-book-author-text">{{ metadata.creator }}</span>
+          </div>
       </div>
       <div class="slide-contents-book-progress-wrapper">
         <div class="slide-contents-book-progress">
@@ -200,16 +206,22 @@ export default {
       padding: 0 px2rem(20);
       box-sizing: border-box;
       .slide-contents-book-title {
-        width: px2rem(327.25);
+        // width: px2rem(327.25);
         font-size: px2rem(28);
-        @include ellipsis2(2);
+        @include left;
+        .slide-contents-book-title-text {
+          @include ellipsis2(3);
+        }
       }
       .slide-contents-book-author {
-        width: px2rem(327.25);
+        // width: px2rem(327.25);
         font-size: px2rem(24);
         margin-top: px2rem(10);
-        // 设置省略时必须设置准确的宽度
-        @include ellipsis;
+        @include left;
+        .slide-contents-book-author-text {
+          // 设置省略时必须设置准确的宽度
+          @include ellipsis2(1);
+        }
       }
     }
     .slide-contents-book-progress-wrapper {
