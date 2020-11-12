@@ -13,6 +13,23 @@ import {
   getBookmark
 } from '@/utils/localStorage'
 
+export const storeHomeMixin = {
+  computed: {
+      ...mapGetters([
+          'offsetY',
+          'hotSearchOffsetY',
+          'flapCardVisible'
+      ])
+  },
+  methods: {
+      ...mapActions([
+          'setOffsetY',
+          'setHotSearchOffsetY',
+          'setFlapCardVisible'
+      ]),
+  }
+}
+
 export const ebookMixin = {
   computed: {
     ...mapGetters([

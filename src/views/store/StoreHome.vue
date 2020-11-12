@@ -1,9 +1,16 @@
 <template>
-  <div class="store-home"></div>
+  <div class="store-home">
+    <search-bar></search-bar>
+  </div>
 </template>
 
 <script>
-export default {}
+import SearchBar from '@/components/home/SearchBar'
+export default {
+  components: {
+    SearchBar,
+  },
+}
 </script>
 <style lang='scss' scoped>
 @import '@/assets/styles/global';
