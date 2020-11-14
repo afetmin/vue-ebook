@@ -1,17 +1,17 @@
 <template>
   <div class="store-home">
     <search-bar></search-bar>
-    <flip-card></flip-card>
+    <flap-card></flap-card>
   </div>
 </template>
 
 <script>
 import SearchBar from '@/components/home/SearchBar'
-import FlipCard from '@/components/home/FlipCard'
+import FlapCard from '@/components/home/FlapCard'
 export default {
   components: {
     SearchBar,
-    FlipCard,
+    FlapCard,
   },
 }
 </script>
