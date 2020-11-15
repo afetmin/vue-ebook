@@ -96,7 +96,8 @@ const messages = {
     downloadFirst: 'Please download book first',
     welcome: 'Welcome to visit iMooc<br>Learning "Practical WeChat Reading - Enterprise Web Book Store of Amami Native APP"<br>--------  Author: Sam  --------',
     find: 'Go to book store',
-    changeLanguage: 'Change Language'
+    changeLanguage: 'Change Language',
+    studyNow: 'Learn on imooc.com'
   },
   detail: {
     copyright: 'Copyright',
