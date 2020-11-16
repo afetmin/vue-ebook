@@ -251,9 +251,9 @@ export default {
   @include absCenter;
   .flap-card-bg {
     position: relative;
-    width: px2rem(64);
-    height: px2rem(64);
-    border-radius: px2rem(5);
+    width: px2rem(128);
+    height: px2rem(128);
+    border-radius: px2rem(10);
     background: white;
     transform: scale(0);
     opacity: 0;
@@ -279,8 +279,8 @@ export default {
       }
     }
     .flap-card {
-      width: px2rem(48);
-      height: px2rem(48);
+      width: px2rem(96);
+      height: px2rem(96);
       @include absCenter;
       .flap-card-circle {
         display: flex;
@@ -294,12 +294,12 @@ export default {
           backface-visibility: hidden;
         }
         .flap-card-semi-circle-left {
-          border-radius: px2rem(24) 0 0 px2rem(24);
+          border-radius: px2rem(48) 0 0 px2rem(48);
           background-position: center right;
           transform-origin: right;
         }
         .flap-card-semi-circle-right {
-          border-radius: 0 px2rem(24) px2rem(24) 0;
+          border-radius: 0 px2rem(48) px2rem(48) 0;
           background-position: center left;
           transform-origin: left;
         }
@@ -324,9 +324,9 @@ export default {
   .book-card {
     position: relative;
     width: 65%;
-    max-width: px2rem(400);
+    max-width: px2rem(800);
     box-sizing: border-box;
-    border-radius: px2rem(15);
+    border-radius: px2rem(30);
     background: white;
     &.animation {
       animation: scale 0.3s ease-in both;
@@ -344,37 +344,37 @@ export default {
     .book-card-wrapper {
       width: 100%;
       height: 100%;
-      margin-bottom: px2rem(30);
+      margin-bottom: px2rem(60);
       @include columnTop;
       .img-wrapper {
         width: 100%;
-        margin-top: px2rem(20);
+        margin-top: px2rem(40);
         @include center;
         .img {
-          width: px2rem(90);
-          height: px2rem(130);
+          width: px2rem(180);
+          height: px2rem(260);
         }
       }
       .content-wrapper {
-        padding: 0 px2rem(20);
-        margin-top: px2rem(20);
+        padding: 0 px2rem(40);
+        margin-top: px2rem(40);
         .content-title {
           color: #333;
           font-weight: bold;
-          font-size: px2rem(18);
-          line-height: px2rem(20);
-          max-height: px2rem(40);
+          font-size: px2rem(36);
+          line-height: px2rem(40);
+          max-height: px2rem(80);
           text-align: center;
           @include ellipsis2(2);
         }
         .content-author {
-          margin-top: px2rem(10);
+          margin-top: px2rem(20);
           text-align: center;
         }
         .content-category {
           color: #999;
-          font-size: px2rem(14);
-          margin-top: px2rem(10);
+          font-size: px2rem(28);
+          margin-top: px2rem(20);
           text-align: center;
         }
       }
@@ -384,11 +384,11 @@ export default {
         left: 0;
         z-index: 1100;
         width: 100%;
-        border-radius: 0 0 px2rem(15) px2rem(15);
-        padding: px2rem(15) 0;
+        border-radius: 0 0 px2rem(30) px2rem(30);
+        padding: px2rem(30) 0;
         text-align: center;
         color: white;
-        font-size: px2rem(14);
+        font-size: px2rem(28);
         background: $color-blue;
       }
     }
@@ -396,16 +396,16 @@ export default {
   .close-btn-wrapper {
     position: absolute;
     left: 0;
-    bottom: px2rem(30);
+    bottom: px2rem(60);
     z-index: 1100;
     width: 100%;
     @include center;
     .icon-close {
-      width: px2rem(45);
-      height: px2rem(45);
+      width: px2rem(90);
+      height: px2rem(90);
       border-radius: 50%;
       background: #333;
-      font-size: px2rem(25);
+      font-size: px2rem(50);
       color: white;
       @include center;
     }

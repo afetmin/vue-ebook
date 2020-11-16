@@ -24,7 +24,9 @@ import { ebookMixin } from '@/utils/mixin'
 export default {
   mixins: [ebookMixin],
   methods: {
-    back() {},
+    back() {
+      this.$router.go(-1) // 返回上一級
+    },
   },
 }
 </script>

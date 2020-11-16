@@ -12,21 +12,27 @@ import {
   saveLocation,
   getBookmark
 } from '@/utils/localStorage'
+import {
+  gotoBookDetail
+} from './store'
 
 export const storeHomeMixin = {
   computed: {
-      ...mapGetters([
-          'offsetY',
-          'hotSearchOffsetY',
-          'flapCardVisible'
-      ])
+    ...mapGetters([
+      'offsetY',
+      'hotSearchOffsetY',
+      'flapCardVisible'
+    ])
   },
   methods: {
-      ...mapActions([
-          'setOffsetY',
-          'setHotSearchOffsetY',
-          'setFlapCardVisible'
-      ]),
+    ...mapActions([
+      'setOffsetY',
+      'setHotSearchOffsetY',
+      'setFlapCardVisible'
+    ]),
+    showBookDetail(book) {
+      gotoBookDetail(this, book)
+    }
   }
 }
 

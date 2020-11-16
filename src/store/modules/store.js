@@ -1,9 +1,9 @@
 const store = {
   state: {
     hotSearchOffsetY: 0,
-    flapCardVisible: true,
-    isEditMode: false,
-    shelfList: [],
+    flapCardVisible: false,
+    isEditMode: false, // 进入编辑模式
+    shelfList: [], // 书架列表
     shelfSelected: [],
     shelfTitleVisible: true,
     shelfCategory: [], // 书架分类列表数据
