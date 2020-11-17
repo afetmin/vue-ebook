@@ -37,7 +37,7 @@ export function download (book, onSuccess, onError, onProgress) {
 export function shelf () {
     return axios({
         method: 'get',
-        url: `${process.env.VUE_APP_BASE_URL}/book/shelf`
+        url: `${process.env.VUE_APP_BASE_URL}/book/shelf`,
     })
 }
 

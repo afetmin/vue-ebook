@@ -33,7 +33,7 @@
             align-content: flex-start;
             width: 100%;
             height: 100%;
-            padding-top: px2rem(5);
+            padding-top: px2rem(10);
             box-sizing: border-box;
 
             .shelf-item-category-item {
@@ -43,15 +43,15 @@
                 box-sizing: border-box;
 
                 &:nth-child(3n+1) {
-                    padding: 0 px2rem(2.5) px2rem(5) px2rem(5);
+                    padding: 0 px2rem(5) px2rem(10) px2rem(10);
                 }
 
                 &:nth-child(3n+2) {
-                    padding: 0 px2rem(2.5) px2rem(5) px2rem(2.5);
+                    padding: 0 px2rem(5) px2rem(10) px2rem(5);
                 }
 
                 &:nth-child(3n+3) {
-                    padding: 0 px2rem(5) px2rem(5) px2rem(2.5);
+                    padding: 0 px2rem(10) px2rem(10) px2rem(5);
                 }
 
                 .shelf-item-category-img {
@@ -64,7 +64,7 @@
         .shelf-item-category-bg {
             width: 100%;
             height: 100%;
-            font-size: px2rem(30);
+            font-size: px2rem(60);
             color: #ccc;
             background: white;
             @include center;

@@ -31,7 +31,7 @@
       bottom: 0;
       width: 0;
       height: 0;
-      border-width: px2rem(15);
+      border-width: px2rem(30);
       border-style: solid;
       border-color: transparent transparent rgba(0, 0, 0, .3) rgba(0, 0, 0, .3);
     }
@@ -39,13 +39,13 @@
       position: absolute;
       left: 0;
       bottom: 0;
-      width: px2rem(30);
-      height: px2rem(30);
-      padding-bottom: px2rem(5);
-      padding-left: px2rem(3);
+      width: px2rem(60);
+      height: px2rem(60);
+      padding-bottom: px2rem(10);
+      padding-left: px2rem(6);
       @include leftBottom;
       .icon-private {
-        font-size: px2rem(12);
+        font-size: px2rem(24);
         color: white;
       }
     }

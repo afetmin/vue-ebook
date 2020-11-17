@@ -5,8 +5,8 @@
             <shelf-search></shelf-search>
             <shelf-list :data="shelfList"></shelf-list>
         </scroll>
-        <shelf-footer></shelf-footer>
-        <nav-bar></nav-bar>
+        <!-- <shelf-footer></shelf-footer> -->
+        <!-- <nav-bar></nav-bar> -->
     </div>
 </template>
 
@@ -16,18 +16,18 @@
     import Scroll from '../../components/common/Scroll'
     import ShelfSearch from '../../components/shelf/ShelfSearch'
     import ShelfList from '../../components/shelf/ShelfList'
-    import ShelfFooter from '../../components/shelf/ShelfFooter'
-    import NavBar from '../../components/common/NavBar'
+    // import ShelfFooter from '../../components/shelf/ShelfFooter'
+    // import NavBar from '../../components/common/NavBar'
 
     export default {
         mixins: [storeShelfMixin],
         components: {
-            NavBar,
+            // NavBar,
             Scroll,
             ShelfTitle,
             ShelfSearch,
             ShelfList,
-            ShelfFooter
+            // ShelfFooter
         },
         watch: {
             isEditMode (isEditMode) {

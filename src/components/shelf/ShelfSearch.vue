@@ -114,10 +114,10 @@
     position: relative;
     z-index: 105;
     width: 100%;
-    height: px2rem(94);
-    font-size: px2rem(16);
+    height: px2rem(188);
+    font-size: px2rem(32);
     background: white;
-    box-shadow: 0 px2rem(2) px2rem(2) 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 px2rem(4) px2rem(4) 0 rgba(0, 0, 0, .1);
     &.hide-shadow {
       box-shadow: none;
     }
@@ -128,12 +128,12 @@
     }
     .shelf-search {
       position: absolute;
-      top: px2rem(42);
+      top: px2rem(84);
       left: 0;
       z-index: 105;
       display: flex;
       width: 100%;
-      height: px2rem(52);
+      height: px2rem(104);
       transition: top $animationTime linear;
       &.search-top {
         top: 0;
@@ -141,74 +141,74 @@
       .search-wrapper {
         flex: 1;
         display: flex;
-        margin: px2rem(8) 0 px2rem(8) px2rem(10);
-        border: px2rem(1) solid #ccc;
-        border-radius: px2rem(3);
+        margin: px2rem(16) 0 px2rem(16) px2rem(20);
+        border: px2rem(2) solid #ccc;
+        border-radius: px2rem(6);
         .icon-search-wrapper {
-          flex: 0 0 px2rem(22);
+          flex: 0 0 px2rem(44);
           @include right;
           .icon-search {
-            font-size: px2rem(12);
+            font-size: px2rem(24);
           }
         }
         .search-input-wrapper {
           flex: 1;
-          padding: 0 px2rem(10);
+          padding: 0 px2rem(20);
           box-sizing: border-box;
           @include center;
           .search-input {
             width: 100%;
-            font-size: px2rem(14);
+            font-size: px2rem(28);
             border: none;
             color: #333;
             &:focus {
               outline: none;
             }
             &::-webkit-input-placeholder {
-              font-size: px2rem(14);
+              font-size: px2rem(28);
               color: #ccc;
             }
           }
         }
         .icon-clear-wrapper {
-          flex: 0 0 px2rem(24);
+          flex: 0 0 px2rem(48);
           @include left;
           .icon-close-circle-fill {
-            font-size: px2rem(14);
+            font-size: px2rem(28);
             color: #ccc;
           }
         }
       }
       .icon-locale-wrapper {
-        flex: 0 0 px2rem(55);
+        flex: 0 0 px2rem(110);
         @include center;
         .icon-cn, .icon-en {
-          font-size: px2rem(22);
+          font-size: px2rem(44);
           color: #666;
         }
       }
       .cancel-btn-wrapper {
-        flex: 0 0 px2rem(55);
+        flex: 0 0 px2rem(110);
         @include center;
         .cancel-text {
-          font-size: px2rem(14);
+          font-size: px2rem(28);
           color: $color-blue;
         }
       }
     }
     .shelf-search-tab-wrapper {
       position: absolute;
-      top: px2rem(52);
+      top: px2rem(104);
       left: 0;
       z-index: 105;
       display: flex;
       width: 100%;
-      height: px2rem(42);
+      height: px2rem(84);
       .shelf-search-tab-item {
         flex: 1;
         @include center;
         .shelf-search-tab-text {
-          font-size: px2rem(12);
+          font-size: px2rem(24);
           color: #999;
           &.is-selected {
             color: $color-blue;
