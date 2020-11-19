@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  name: 'toost', // vue-create-api通过name拼接成 $createToost来使用
   props: {
     text: [String, Number],
     timeout: {
