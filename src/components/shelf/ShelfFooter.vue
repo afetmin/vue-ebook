@@ -103,6 +103,7 @@ export default {
         download(
           book,
           (book) => {
+            // 加上这句话使create-api重新创建实例，改变显示的text
             toast.remove()
             resolve(book)
           },

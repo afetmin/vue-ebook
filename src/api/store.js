@@ -18,6 +18,7 @@ export function download (book, onSuccess, onError, onProgress) {
         method: 'get',
         responseType: 'blob',
         timeout: 180 * 1000,
+        // 下载进度
         onDownloadProgress: progressEvent => {
             if (onProgress) onProgress(progressEvent)
         }
